@@ -204,7 +204,7 @@ def retrieve(collection, question, top_k=5):
 
 
 def ask_groq(question, context):
-    client = Groq(api_key=get_secret("Groq_Api_Key"))
+    client = Groq(api_key=get_secret("GROQ_Api_Key"))
 
     user_prompt = f"""User Question:
 {question}
@@ -231,7 +231,7 @@ st.title("📚 Policy RAG Chatbot")
 st.caption("Ask questions about your private policy PDFs stored in Google Drive.")
 
 # Check required secrets before doing any Google Drive or model work.
-required = ["Groq_Api_Key", "GOOGLE_DRIVE_FOLDER_ID", "gcp_service_account"]
+required = ["GROQ_Api_Key", "GOOGLE_DRIVE_FOLDER_ID", "gcp_service_account"]
 missing = [name for name in required if name not in st.secrets]
 
 if missing:
@@ -243,7 +243,7 @@ if missing:
 Add these to **Streamlit → App → Settings → Secrets**:
 
 ```toml
-Groq_Api_Key = "your-groq-api-key"
+GROQ_Api_Key = "your-groq-api-key"
 GOOGLE_DRIVE_FOLDER_ID = "your-google-drive-folder-id"
 
 [gcp_service_account]
